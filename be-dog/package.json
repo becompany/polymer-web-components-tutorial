@@ -1,0 +1,10 @@
+{
+  "name": "be-dog",
+  "description": "Component to render random dogs&#39; media elements based on be-media.",
+  "main": "be-dog.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "be-media": "../be-media"
+  },
+  "devDependencies": {}
+}

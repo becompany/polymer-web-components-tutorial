@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>be-media test</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+
+    <script type="module" src="../be-media.js"></script>
+  </head>
+  <body>
+
+    <test-fixture id="BasicTestFixture">
+      <template>
+        <be-media src="https://random.dog/21149-31365-11062.jpg"></be-media>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="ChangedPropertyTestFixture">
+      <template>
+        <be-media src="https://random.dog/8a57201a-d183-4978-a20c-ae8ecff21134.mp4"></be-media>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+      suite('be-media', () => {
+
+        test('instantiating the element with default properties works', () => {
+          const element = fixture('BasicTestFixture');
+          const elementShadowRoot = element.shadowRoot;
+          assert.isNotNull(elementShadowRoot,
+                'the element does not contains "shadowRoot"');
+          assert.equal(element.src, 'https://random.dog/21149-31365-11062.jpg');
+          let elementImg = elementShadowRoot.querySelector('img');
+          assert.isNull(elementImg,
+              'be-media not expected to contain "img" element');
+          elementShadowRoot.querySelectorAll('dom-if').forEach(elem =>
+              elem.render());
+          elementImg = elementShadowRoot.querySelector('img');
+          assert.isNotNull(elementImg,
+                'be-media expected to contain "img" element');
+          assert.equal(elementImg.src, 'https://random.dog/21149-31365-11062.jpg');
+        });
+
+        test('setting a property on the element works', () => {
+          // Create a test fixture
+          const element = fixture('ChangedPropertyTestFixture');
+          const elementShadowRoot = element.shadowRoot;
+          assert.isNotNull(elementShadowRoot,
+                'the element does not contains "shadowRoot"');
+          assert.equal(element.src, 'https://random.dog/8a57201a-d183-4978-a20c-ae8ecff21134.mp4');
+          let elementVideo = elementShadowRoot.querySelector('video');
+          assert.isNull(elementVideo,
+              'be-media not expected to contain "video" element');
+          elementShadowRoot.querySelectorAll('dom-if').forEach(elem =>
+              elem.render());
+          elementVideo = elementShadowRoot.querySelector('video');
+          assert.isNotNull(elementVideo,
+                'be-media expected to contain "video" element');
+            assert.equal(elementVideo.querySelector('source').src,
+                'https://random.dog/8a57201a-d183-4978-a20c-ae8ecff21134.mp4');
+        });
+
+      });
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>be-media demo</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+      import '@polymer/iron-demo-helpers/demo-snippet';
+    </script>
+
+    <script type="module" src="../be-media.js"></script>
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic be-media demo</h3>
+      <demo-snippet>
+        <template>
+          <be-media
+                  class-name="img-fluid"
+                  src="https://random.dog/21149-31365-11062.jpg"></be-media>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <be-media class-name="img-fluid"
+                    src="https://random.dog/8a57201a-d183-4978-a20c-ae8ecff21134.mp4"></be-media>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

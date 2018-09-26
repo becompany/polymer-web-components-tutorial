@@ -1,0 +1,10 @@
+{
+  "name": "be-cat",
+  "description": "Component to render random cat&#39;s media elements based on be-media.",
+  "main": "be-cat.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "be-media": "../be-media"
+  },
+  "devDependencies": {}
+}
